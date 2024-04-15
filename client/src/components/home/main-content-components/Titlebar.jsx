@@ -9,8 +9,8 @@ function Titlebar() {
   const [assetDetails, setAssetDetails] = useState({});
 
   useEffect(() => {
-    if (selectedAsset && selectedAsset.asset_code) {
-      axios.get(`http://localhost:3000/asset-details/${selectedAsset.asset_code}`)
+    if (selectedAsset && selectedAsset.Asset_ode) {
+      axios.get(`http://localhost:3000/asset-details/${selectedAsset.Asset_Code}`)
         .then(response => {
           setAssetDetails(response.data);
         })
@@ -20,13 +20,13 @@ function Titlebar() {
     }
   }, [selectedAsset]);
 
-  if (!setSelectedAsset) {
-    return <div>Item Details</div>;
+  if (!selectedAsset) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-      <div style={{ width: "50%" }} className='title-bar'>{setSelectedAsset.asset_code} | {setSelectedAsset.asset_name}</div>
+      <div style={{ width: "50%" }} className='title-bar'>{selectedAsset.Asset_Code} | {selectedAsset.Asset_Name}</div>
       <div style={{ display: "flex", flexDirection: "row", width: "50%", justifyContent: "right", paddingRight: "15px" }}><EditButton /></div>
     </div>
   )

@@ -6,9 +6,11 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, Modal
 import { Table, TableHead, TableBody, TableRow, TableCell, TableSortLabel, TextField, Select, Menu } from '@mui/material';
 import SaveButton from '../reusable-assets/SaveButton';
 import CancelButton from '../reusable-assets/CancelButton';
+import SelectedAssetContext, { SelectedAssetConsumer } from '../../SelectedAssetContext';
 
 
 const ListPanel = () => {
+  const {setSelectedAsset} = useContext(SelectedAssetContext)
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
